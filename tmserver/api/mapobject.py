@@ -496,7 +496,7 @@ def add_segmentations(experiment_id, mapobject_type_id):
         well_pos_x, zplane, tpoint
     )
 
-    npz_file = base64.b64decode(data.get('npz_file'))
+    npz_file = base64.decodestring(data.get('npz_file'))
     pixels = np.load(BytesIO(npz_file))["segmentation"]
     array = np.array(pixels, dtype=np.int32)
     labels = np.unique(array[array > 0])
